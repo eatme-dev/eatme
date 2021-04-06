@@ -1,0 +1,9 @@
+- Build npm/ in Makefile
+
+* http://witkowskibartosz.com/blog/web_based_terminal_emulators.html#.YG-L03WYWV5
+* https://github.com/yudai/gotty/releases
+* https://github.com/tsl0922/ttyd
+* https://xtermjs.org/
+* Start tmate in background
+  * https://github.com/tmate-io/tmate/issues/145
+

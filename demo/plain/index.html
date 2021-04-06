@@ -1,0 +1,96 @@
+<!DOCTYPE html>     <!-- declare html5 -->
+<html>
+
+<!--
+This EatMe example page uses:
+* Bootstrap
+* CodeMirror
+* CoffeeScript
+* Lodash
+* YAML
+-->
+
+<head>
+  <!-- Bootstrap -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.60.0/codemirror.css"
+    integrity="sha512-pUWtXiGlFCCny0AjRoju8IelzzeY9k13UCkai+Dpx2C4ocnLu9yqZHDy84XKpZ6BbyZA9gnSkUf0di4n9pcJ5g=="
+    crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.60.0/codemirror.min.js"
+    integrity="sha512-hc0zo04EIwTzKLvp2eycDTeIUuvoGYYmFIjYx7DmfgQeZPC5N27sPG2wEQPq8d8fCTwuguLrI1ffatqxyTbHJw=="
+    crossorigin="anonymous"></script>
+
+  <!-- JavaScript helper libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+    integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
+    crossorigin="anonymous"></script>
+
+  <!-- Non-standard JavaScript imports -->
+  <script>module = {}</script>
+  <script src="https://cdn.jsdelivr.net/npm/json-stringify-pretty-compact@3.0.0/index.js"
+    integrity="sha256-RVmeq9Uj2msHRndNeR3Ddn+2+GKISm2w+mMrEwpYQG4="
+    crossorigin="anonymous"></script>
+  <script>(JSONPC = {}).stringify = module.exports</script>
+  <script src="https://cdn.jsdelivr.net/npm/he@1.2.0/he.js"
+    integrity="sha256-dsVU1bv9Ay/mIFlQdqUKvqUSS5y9Tp/+aslKT4Va7Os="
+    crossorigin="anonymous"></script>
+  <script type="module">
+    import * as _ from 'https://unpkg.com/yaml@2.0.0-4/browser/dist/index.js'
+    window.YAML = _
+  </script>
+
+  <!-- Icons -->
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <!-- EatMe -->
+  <link rel="stylesheet" href="lib/eatme.css" />
+  <script src="lib/eatme.js"></script>
+  <script src="lib/eatme-theme-bootstrap.js"></script>
+  <script src="eatme.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+<h2>Put a Bird on it!</h2>
+
+<p>
+I'm baby bitters fingerstache cardigan, typewriter health goth food truck leggings craft beer taiyaki edison bulb selvage.
+Shoreditch food truck 8-bit poutine la croix.
+</p>
+
+<pre><code class="language-yaml-json">foo: bar
+baz:
+- one<&>
+- two
+</code></pre>
+
+
+<p>
+I'm baby meh small batch ugh church-key.
+Bushwick portland pop-up pour-over 90's gluten-free.
+Dolor deserunt culpa tousled listicle anim woke vice labore keytar whatever elit hella.
+</p>
+</div>
+
+</body>
+</html>

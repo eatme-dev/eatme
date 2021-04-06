@@ -1,0 +1,22 @@
+name: eatme
+version: 0.0.2
+description: Code Examples in Wonderland
+homepage: https://eatme.dev
+author: Ingy döt Net
+license: MIT
+bugs:
+  url: https://github.com/eatme-dev/eatme/issues
+main: index.js
+scripts:
+  test: npm test
+repository:
+  type: git
+  url: git+https://github.com/eatme-dev/eatme.git
+keywords:
+  - doc
+  - documentation
+  - edit
+  - examples
+  - inline
+  - interactive
+  - markdown

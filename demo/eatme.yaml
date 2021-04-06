@@ -1,0 +1,18 @@
+opts:
+  theme: default
+  editor: codemirror
+list:
+- name: yaml-to-json
+  opts:
+    height: auto
+    max-height: 300px
+  pane:
+  - name: yaml
+    type: input
+    edit: true
+  - name: json
+    type: output
+    from: yaml
+    func:
+    - yaml2json
+    - jsonPretty
