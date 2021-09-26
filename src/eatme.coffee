@@ -41,6 +41,9 @@ class window.EatMe
     )
 
   constructor: (@from, @conf, @code)->
+    if @code? and @code.init?
+      @code.init(@)
+
     @make_root()
 
     @make_cols()
@@ -138,11 +141,10 @@ class window.EatMe
       calls.push([func, $pane])
 
     pane = $pane[0]
-    say pane
     conf = pane.eatme
     if conf.type == 'input' and not pane.cm?
       $textarea = $pane.find('textarea')
-      text = $(this.from).text()
+      text = if @input? then @input else $(@from).text()
 
       if (text)
         $textarea.text(text)
@@ -155,6 +157,8 @@ class window.EatMe
 
         do_calls = ->
           text = cm.getValue()
+          if self.code? and self.code.change?
+              self.code.change(text, pane)
           results = []
           for call in pane.calls
             [func, $to] = call
@@ -165,8 +169,11 @@ class window.EatMe
 
         setTimeout ->
           do_calls()
-          say cm.getValue()
-        , 500
+          cm.focus()
+          cm.setCursor
+            line: 0
+            ch: 0
+        , 200
       , 100
 
   call: (func, text, $to)->
