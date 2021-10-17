@@ -155,6 +155,11 @@ class window.EatMe
         pane.cm = cm = CodeMirror.fromTextArea $textarea[0],
           lineNumbers: true
 
+        cm.setSize(
+          null,
+          cm.getWrapperElement().offsetHeight - 28,
+        )
+
         do_calls = ->
           text = cm.getValue()
           if self.code? and self.code.change?
