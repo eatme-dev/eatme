@@ -68,10 +68,11 @@ class window.EatMe
       $col = @make_col(size)
       @root.append($col)
 
+    @$panes = {}
     for pane in @conf.pane
       if (column = pane.colx)?
         $col = $(@root.find(".eatme-col")[column - 1])
-        $pane = @make_pane(pane.slug)
+        @$panes[pane.slug] = $pane = @make_pane(pane.slug)
           .appendTo($col)
         @setup_pane($pane)
 
@@ -399,16 +400,28 @@ class window.EatMe
     """)
 
     if not btn.dead?
-      self = @
       func = btn.func || id.replace(/-/g, '_')
       $btn.attr('href': '#')
+      if btn.code?
+        that = @code
+        func = @code[func]
+      else
+        that = @
+        func = @[func]
+      self = @
       $tools.on(
         'click',
         ".eatme-btn-#{id}",
-        (e)-> self[func]($(@), e)
+        (e)-> func.call(that, $(@), e, self)
       )
 
     return $btn
+
+  add_button: (id, button, row, col)->
+    row ?= EatMe.toolbar.length
+    button.code = true
+    EatMe.buttons[id] = button
+    EatMe.toolbar[row - 1].push(id)
 
   @toolbar_div: """
     <div class="eatme-btns dropdown">
