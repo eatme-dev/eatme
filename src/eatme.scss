@@ -46,6 +46,7 @@ pre.eatme-box-error {
 }
 
 div.eatme-box {
+  overflow-y:scroll;
   pre {
     white-space: pre-wrap;
     margin-left: 10px;
@@ -144,4 +145,10 @@ div.eatme-btns {
 .gutter.gutter-horizontal {
   height: 100%;
   float: left;
+}
+
+// CodeMirror
+.CodeMirror {
+  border: 1px solid #eee;
+  height: auto;
 }
