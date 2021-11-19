@@ -155,6 +155,7 @@ class window.EatMe
       setTimeout ->
         pane.cm = cm = CodeMirror.fromTextArea $textarea[0],
           lineNumbers: true
+          tabSize: 4
 
         do_calls = ->
           text = cm.getValue()
@@ -206,6 +207,8 @@ class window.EatMe
 
     $show = $pane.children().last()
     $show.replaceWith($box) unless $show[0] == $box[0]
+
+    @code.show(@, $pane, show)
 
   @empty: 1
   make_empty_pane: ->
