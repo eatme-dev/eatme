@@ -13,6 +13,7 @@ window.say = (a...)->
   return a[0]
 
 class window.EatMe
+
   @configs: {}
   @objects: []
 
@@ -24,7 +25,7 @@ class window.EatMe
     @configs[slug] = conf
     return slug
 
-  @init: ({elem, conf, code})->
+  @init: ({elem, conf})->
     if elem instanceof jQuery
       $elem = elem
     else if _.isString(elem) or elem instanceof Element
@@ -35,14 +36,18 @@ class window.EatMe
     if not (config = @configs[conf])
       throw "No EatMe.Config named '#{conf}' found"
 
+    sub_class = @
+
     $elem.each(->
-      eatme = new EatMe(@, config, code)
-      EatMe.objects.push(eatme)
+      elem = @
+      eatme_object = new sub_class(elem, config)
+      sub_class.objects.push(eatme_object)
     )
 
-  constructor: (@from, @conf, @code)->
-    if @code? and @code.init?
-      @code.init(@)
+  init: ->
+
+  constructor: (@from, @conf)->
+    @init()
 
     @make_root()
 
@@ -159,8 +164,8 @@ class window.EatMe
 
         do_calls = ->
           text = cm.getValue()
-          if self.code? and self.code.change?
-              self.code.change(text, pane)
+          if self.change?
+            self.change(text, pane)
           results = []
           for call in pane.calls
             [func, $to] = call
@@ -182,7 +187,7 @@ class window.EatMe
     func = func.replace(/-/g, '_')
 
     try
-      show = @code[func](text)
+      show = @[func](text)
       if _.isString(show)
         show = output: show
     catch e
@@ -207,8 +212,6 @@ class window.EatMe
 
     $show = $pane.children().last()
     $show.replaceWith($box) unless $show[0] == $box[0]
-
-    @code.show(@, $pane, show)
 
   @empty: 1
   make_empty_pane: ->
@@ -400,17 +403,12 @@ class window.EatMe
     if not btn.dead?
       func = btn.func || id.replace(/-/g, '_')
       $btn.attr('href': '#')
-      if btn.code?
-        that = @code
-        func = @code[func]
-      else
-        that = @
-        func = @[func]
       self = @
+      func = @[func]
       $tools.on(
         'click',
         ".eatme-btn-#{id}",
-        (e)-> func.call(that, $(@), e, self)
+        (e)-> func.call(self, $(@), e, self)
       )
 
     return $btn
