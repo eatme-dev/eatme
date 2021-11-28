@@ -525,6 +525,7 @@ class EatMe.Config
 
     @pane = []
     @panes = {}
+    @opts = conf.opts ? {}
 
     @set_panes()
 
