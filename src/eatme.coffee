@@ -45,6 +45,7 @@ class window.EatMe
     )
 
   init: ->
+    @iteration = 0
 
   constructor: (@from, @conf)->
     @init()
@@ -163,14 +164,13 @@ class window.EatMe
           tabSize: 4
 
         do_calls = ->
+          self.iteration += 1
           text = cm.getValue()
           if self.change?
             self.change(text, pane)
-          results = []
           for call in pane.calls
             [func, $to] = call
-            results.push(self.call(func, text, $to))
-          results
+            self.call(func, text, $to)
 
         cm.on('change', $.debounce(400, do_calls))
 
