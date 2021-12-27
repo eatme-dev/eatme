@@ -161,6 +161,7 @@ class window.EatMe
       setTimeout ->
         pane.cm = cm = CodeMirror.fromTextArea $textarea[0],
           lineNumbers: true
+          showTrailingSpace: true
           tabSize: 4
 
         do_calls = ->
