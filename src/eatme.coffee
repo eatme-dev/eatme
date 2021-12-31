@@ -171,9 +171,10 @@ class window.EatMe
             self.change(text, pane)
           for call in pane.calls
             [func, $to] = call
+            func = func.replace(/-/g, '_')
             self.call(func, text, $to)
 
-        cm.on('change', $.debounce(400, do_calls))
+        cm.on('change', $.debounce(300, do_calls))
 
         setTimeout ->
           do_calls()
@@ -185,17 +186,8 @@ class window.EatMe
       , 100
 
   call: (func, text, $to)->
-    func = func.replace(/-/g, '_')
-
-    try
-      show = @[func](text)
-      if _.isString(show)
-        show = output: show
-    catch e
-      error = (e.stack || e.msg || e).toString()
-      show = error: error
-
-    @show($to, show)
+    @[func] text, (resp)=>
+      @show($to, resp)
 
   show: ($pane, show)->
     pane = $pane[0]
