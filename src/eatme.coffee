@@ -306,7 +306,7 @@ class window.EatMe
     $col = $button.closest('.eatme-col')
     $cols = $col.parent().find('.eatme-col')
     cols = $cols.length
-    return unless cols < 4
+    return unless cols < 5
     size_old = 12 / cols++
     size_new = 12 / cols
     $cols.toggleClass("col-lg-#{size_old} col-lg-#{size_new}")
@@ -513,7 +513,7 @@ class EatMe.Config
     [@src, @trg, @lvl] = [conf, @, 'top level']
 
     @required_slug('slug')
-    @optional_num('cols', 1, 4)
+    @optional_num('cols', 1, 5)
     @required_str('html')
 
     @pane = []
@@ -541,7 +541,7 @@ class EatMe.Config
       @set_call()
       @optional_str('mark')
       @optional_str('html')
-      @optional_num('colx', 1, 4)
+      @optional_num('colx', 1, 5)
 
       @set_type()
 
